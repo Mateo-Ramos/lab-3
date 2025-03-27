@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+./bin/rails server &
+./bin/esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --watch
+
+exec "./bin/rails", "server", *ARGV
+

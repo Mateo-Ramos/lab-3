@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const esbuild = require("esbuild");
+const { sassPlugin } = require("esbuild-sass-plugin");
+
+esbuild.build({
+  entryPoints: ["app/javascript/application.js"],
+  bundle: true,
+  sourcemap: true,
+  outdir: "app/assets/builds",
+}).catch(() => process.exit(1));
+
+esbuild.build({
+  entryPoints: ["app/assets/stylesheets/application.bootstrap.scss"],
+  bundle: true,
+  sourcemap: true,
+  outdir: "app/assets/builds",
+  plugins: [sassPlugin()]
+}).catch(() => process.exit(1));
+

@@ -1,0 +1,35 @@
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+a {
+  color: #a6c8ff;
+}
+
+.navbar, footer {
+  background-color: #1f1f1f;
+}
+
+.navbar-brand span {
+  color: #ffb3c1;
+}
+
+.nav-link {
+  color: #c3aed6 !important;
+}
+
+.nav-link:hover {
+  color: #ffc3a0 !important;
+}
+
+footer a {
+  color: #ffb3c1;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+

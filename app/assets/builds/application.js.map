@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../javascript/application.js"],
+  "sourcesContent": ["console.log(\"Hola desde Rails con ESBuild\");\n"],
+  "mappings": ";;AAAA,UAAQ,IAAI,8BAA8B;",
+  "names": []
+}
