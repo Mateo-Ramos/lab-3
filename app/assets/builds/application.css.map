@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../stylesheets/application.bootstrap.scss"],
+  "sourcesContent": ["body {\n  background: red;\n}\n\n"],
+  "mappings": ";AAAA;AACE,cAAY;AACd;",
+  "names": []
+}

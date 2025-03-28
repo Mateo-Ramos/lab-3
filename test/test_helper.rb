@@ -1,6 +1,8 @@
 ENV["RAILS_ENV"] ||= "test"
+ENV["RAILS_SKIP_ASSET_COMPILATION"] = "true"
 require_relative "../config/environment"
 require "rails/test_help"
+
 
 module ActiveSupport
   class TestCase

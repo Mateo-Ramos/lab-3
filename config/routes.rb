@@ -4,4 +4,3 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#submit_contact"
 end
-
