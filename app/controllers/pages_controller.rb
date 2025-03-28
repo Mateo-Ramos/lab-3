@@ -13,4 +13,3 @@ class PagesController < ApplicationController
     redirect_to contact_path
   end
 end
-
