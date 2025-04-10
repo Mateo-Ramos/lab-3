@@ -14,7 +14,7 @@ user1 = User.find_by(username: "mateo")
 user2 = User.find_by(username: "camila")
 
 chat = Chat.create!
-chat.users << [user1, user2]
+chat.users << [ user1, user2 ]
 
 Message.create!(
   chat: chat,
@@ -27,4 +27,3 @@ Message.create!(
   user: user2,
   body: "¡Hola Mateo! Muy bien, ¿y tú?"
 )
-
