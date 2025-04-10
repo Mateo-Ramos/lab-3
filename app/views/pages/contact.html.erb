@@ -2,21 +2,21 @@
   <h1>Contact Us</h1>
   <%= form_with url: contact_path, method: :post, local: true do |form| %>
     <div class="mb-3">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+      <%= form.label :name, "Name" %>
+      <%= form.text_field :name, class: "form-control", required: true %>
     </div>
 
     <div class="mb-3">
-      <%= form.label :email %>
-      <%= form.email_field :email, class: "form-control" %>
+      <%= form.label :email, "Email" %>
+      <%= form.email_field :email, class: "form-control", required: true %>
     </div>
 
     <div class="mb-3">
-      <%= form.label :message %>
-      <%= form.text_area :message, class: "form-control", rows: 5 %>
+      <%= form.label :message, "Message" %>
+      <%= form.text_area :message, class: "form-control", rows: 4, required: true %>
     </div>
 
-    <%= form.submit "Send Message", class: "btn btn-primary" %>
+    <%= form.submit "Send", class: "btn btn-primary" %>
   <% end %>
 
   <% if flash[:notice] %>

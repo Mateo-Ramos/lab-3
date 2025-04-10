@@ -1,9 +1,30 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Crear usuarios de ejemplo
+users = [
+  { username: "mateo", email: "mateo@example.com" },
+  { username: "camila", email: "camila@example.com" },
+  { username: "pedro",  email: "pedro@example.com" }
+]
+
+users.each do |user_data|
+  User.create!(user_data)
+end
+
+# Crear mensajes entre los usuarios
+user1 = User.find_by(username: "mateo")
+user2 = User.find_by(username: "camila")
+
+chat = Chat.create!
+chat.users << [user1, user2]
+
+Message.create!(
+  chat: chat,
+  user: user1,
+  body: "Hola Camila, ¿cómo estás?"
+)
+
+Message.create!(
+  chat: chat,
+  user: user2,
+  body: "¡Hola Mateo! Muy bien, ¿y tú?"
+)
+
