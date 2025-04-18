@@ -1,2 +1,7 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+<h1>Chat Details</h1>
+
+<p><strong>Sender ID:</strong> <%= @chat.sender_id %></p>
+<p><strong>Receiver ID:</strong> <%= @chat.receiver_id %></p>
+<p><strong>Created At:</strong> <%= @chat.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+
+<%= link_to 'Back to Chats', chats_path %>
