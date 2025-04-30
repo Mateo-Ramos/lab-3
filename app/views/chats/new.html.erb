@@ -1,0 +1,17 @@
+<h1>New Chat</h1>
+
+<%= form_with model: @chat, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :sender_id %>
+    <%= form.number_field :sender_id, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :receiver_id %>
+    <%= form.number_field :receiver_id, class: "form-control", required: true %>
+  </div>
+
+  <%= form.submit "Create Chat", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back to Chats", chats_path, class: "btn btn-secondary mt-3" %>

@@ -1,0 +1,22 @@
+<h1>New Message</h1>
+
+<%= form_with model: @message, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :chat_id %>
+    <%= form.number_field :chat_id, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "form-control", required: true %>
+  </div>
+
+  <%= form.submit "Create Message", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back to Messages", messages_path, class: "btn btn-secondary mt-3" %>

@@ -1,12 +1,13 @@
 <h1>Chats</h1>
 
+<%= link_to "New Chat", new_chat_path, class: "btn btn-primary mb-3" %>
+
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th>Sender ID</th>
       <th>Receiver ID</th>
-      <th>Created At</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -16,7 +17,6 @@
         <td><%= chat.id %></td>
         <td><%= chat.sender_id %></td>
         <td><%= chat.receiver_id %></td>
-        <td><%= chat.created_at.strftime("%d/%m/%Y %H:%M") %></td>
         <td><%= link_to 'Show', chat_path(chat) %></td>
       </tr>
     <% end %>
