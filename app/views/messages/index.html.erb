@@ -1,12 +1,12 @@
-<h1>Messages</h1>
+<h1 class="text-info mb-4 border-bottom pb-2">Messages</h1>
 
-<%= link_to "New Message", new_message_path, class: "btn btn-primary mb-3" %>
+<%= link_to "New Message", new_message_path, class: "btn btn-primary mb-4" %>
 
-<table class="table">
+<table class="table table-dark table-striped table-hover align-middle">
   <thead>
     <tr>
       <th>ID</th>
-      <th>User ID</th>
+      <th>Author</th>
       <th>Chat ID</th>
       <th>Body</th>
       <th>Actions</th>
@@ -16,10 +16,12 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= message.id %></td>
-        <td><%= message.user_id %></td>
+        <td><%= message.user.first_name %> <%= message.user.last_name %></td>
         <td><%= message.chat_id %></td>
         <td><%= message.body %></td>
-        <td><%= link_to 'Show', message_path(message) %></td>
+        <td>
+          <%= link_to "Show", message_path(message), class: "btn btn-outline-info btn-sm me-1" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

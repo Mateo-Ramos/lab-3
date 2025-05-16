@@ -1,7 +1,23 @@
-<h1>Chat Details</h1>
+<h1 class="text-info mb-4 border-bottom pb-2">Chat Details</h1>
 
-<p><strong>ID:</strong> <%= @chat.id %></p>
-<p><strong>Sender ID:</strong> <%= @chat.sender_id %></p>
-<p><strong>Receiver ID:</strong> <%= @chat.receiver_id %></p>
+<div class="mb-4">
+  <p><strong>ID:</strong> <%= @chat.id %></p>
+  <p><strong>Sender:</strong> <%= @chat.sender.first_name %> <%= @chat.sender.last_name %></p>
+  <p><strong>Receiver:</strong> <%= @chat.receiver.first_name %> <%= @chat.receiver.last_name %></p>
+</div>
 
-<%= link_to "Back to Chats", chats_path, class: "btn btn-secondary mt-3" %>
+<h2 class="text-warning border-bottom pb-1">Messages in this Chat</h2>
+<ul class="mb-4">
+  <% @chat.messages.each do |message| %>
+    <li class="mb-2">
+      <strong><%= message.user.first_name %>:</strong>
+      <%= message.body %> |
+      <%= link_to "View", message_path(message), class: "btn btn-outline-light btn-sm ms-2" %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="d-flex gap-2 mt-4">
+  <%= link_to "Back to Chats", chats_path, class: "btn btn-secondary" %>
+  <%= link_to "Edit Chat", edit_chat_path(@chat), class: "btn btn-primary" %>
+</div>
