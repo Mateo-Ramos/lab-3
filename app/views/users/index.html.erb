@@ -1,28 +1,35 @@
-<h1 class="text-info mb-4 border-bottom pb-2">Users</h1>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3 px-3">
+    <h1 class="text-info m-0">Users</h1>
+    <%= link_to "New User", new_user_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to "New User", new_user_path, class: "btn btn-primary mb-4" %>
-
-<table class="table table-dark table-striped table-hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Full Name</th>
-      <th>Email</th>
-      <th>Messages Sent</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= "#{user.first_name} #{user.last_name}" %></td>
-        <td><%= user.email %></td>
-        <td><%= user.messages.count %></td>
-        <td>
-          <%= link_to 'Show', user_path(user), class: "btn btn-outline-info btn-sm" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="table-responsive px-3">
+    <table class="table table-dark table-bordered table-striped rounded shadow-sm overflow-hidden">
+      <thead class="table-light text-center">
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Messages Sent</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= "#{user.first_name} #{user.last_name}" %></td>
+            <td><%= user.email %></td>
+            <td><%= user.messages.count %></td>
+            <td>
+              <% if user == current_user %>
+                <%= link_to 'Show', user_path(user), class: "btn btn-outline-info btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

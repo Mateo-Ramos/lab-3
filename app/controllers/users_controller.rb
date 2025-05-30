@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to users_path, alert: "You are not authorized to view this profile."
+    end
   end
 
   def new
@@ -22,10 +25,18 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to users_path, alert: "You are not authorized to edit this profile."
+    end
   end
 
   def update
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to users_path, alert: "You are not authorized to update this profile."
+      return
+    end
+
     if @user.update(user_params)
       redirect_to @user, notice: "User updated successfully."
     else

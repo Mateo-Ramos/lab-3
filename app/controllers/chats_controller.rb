@@ -5,6 +5,9 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+    unless authorized_user?(@chat)
+      redirect_to chats_path, alert: "You are not authorized to view this chat."
+    end
   end
 
   def new
@@ -22,10 +25,18 @@ class ChatsController < ApplicationController
 
   def edit
     @chat = Chat.find(params[:id])
+    unless authorized_user?(@chat)
+      redirect_to chats_path, alert: "You are not authorized to edit this chat."
+    end
   end
 
   def update
     @chat = Chat.find(params[:id])
+    unless authorized_user?(@chat)
+      redirect_to chats_path, alert: "You are not authorized to update this chat."
+      return
+    end
+
     if @chat.update(chat_params)
       redirect_to @chat, notice: "Chat updated successfully."
     else
@@ -37,5 +48,9 @@ class ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:sender_id, :receiver_id)
+  end
+
+  def authorized_user?(chat)
+    chat.sender == current_user || chat.receiver == current_user
   end
 end

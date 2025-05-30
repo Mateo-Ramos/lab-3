@@ -5,6 +5,9 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    unless @message.user == current_user
+      redirect_to messages_path, alert: "You are not authorized to view this message."
+    end
   end
 
   def new
@@ -22,10 +25,18 @@ class MessagesController < ApplicationController
 
   def edit
     @message = Message.find(params[:id])
+    unless @message.user == current_user
+      redirect_to messages_path, alert: "You are not authorized to edit this message."
+    end
   end
 
   def update
     @message = Message.find(params[:id])
+    unless @message.user == current_user
+      redirect_to messages_path, alert: "You are not authorized to update this message."
+      return
+    end
+
     if @message.update(message_params)
       redirect_to @message, notice: "Message updated successfully."
     else
