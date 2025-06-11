@@ -2,14 +2,15 @@
 
 <%= form_with model: @chat, local: true do |form| %>
   <div class="mb-3">
-    <%= form.label :sender_id %>
-    <%= form.number_field :sender_id, class: "form-control", required: true %>
+    <%= form.label :sender_id, "Sender" %>
+    <%= form.collection_select :sender_id, User.all, :id, :full_name, { prompt: "Select sender" }, class: "form-select" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :receiver_id %>
-    <%= form.number_field :receiver_id, class: "form-control", required: true %>
-  </div>
+    <%= form.label :receiver_id, "Receiver" %>
+    <%= form.collection_select :receiver_id, User.all, :id, :full_name, { prompt: "Select receiver" }, class: "form-select" %>
+
+    </div>
 
   <%= form.submit "Create Chat", class: "btn btn-primary" %>
 <% end %>

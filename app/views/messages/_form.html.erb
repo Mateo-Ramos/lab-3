@@ -1,0 +1,26 @@
+<%= form_with(model: message, local: true) do |form| %>
+  <% if message.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">Please fix the following errors:</h4>
+      <ul>
+        <% message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :chat_id, class: "form-label text-light" %>
+    <%= form.number_field :chat_id, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label text-light" %>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <%= form.submit class: "btn btn-success" %>
+<% end %>

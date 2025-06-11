@@ -1,6 +1,8 @@
 class ChatsController < ApplicationController
+  load_and_authorize_resource if: :user_signed_in?
+
   def index
-    @chats = Chat.all
+    @chats = Chat.involving(current_user)
   end
 
   def show
